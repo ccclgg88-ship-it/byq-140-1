@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品集浏览中心 - 雷青青 · 个人简历展示</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body data-page="portfolio">
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">雷青青 · 简历</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="切换导航">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html" data-ajax="false" data-role="button">首页</a></li>
+            <li class="nav-item"><a class="nav-link" href="positioning.html" data-ajax="false" data-role="button">个人定位</a></li>
+            <li class="nav-item"><a class="nav-link" href="skills.html" data-ajax="false" data-role="button">技能与工具</a></li>
+            <li class="nav-item"><a class="nav-link" href="works.html" data-ajax="false" data-role="button">作品与项目</a></li>
+            <li class="nav-item"><a class="nav-link" href="portfolio.html" data-ajax="false" data-role="button">作品集</a></li>
+            <li class="nav-item"><a class="nav-link" href="education.html" data-ajax="false" data-role="button">教育与总结</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="portfolio-section">
+      <div class="portfolio-header">
+        <h1>作品集浏览中心</h1>
+        <p class="portfolio-subtitle">浏览全部设计成果，支持筛选、收藏与对比</p>
+        <div class="portfolio-stats">
+          <span class="stat-item"><i class="bi bi-grid-fill"></i> 共 <strong id="totalCount">6</strong> 个作品</span>
+          <span class="stat-item"><i class="bi bi-heart-fill"></i> 已收藏 <strong id="favCount">0</strong> 个</span>
+          <span class="stat-item"><i class="bi bi-arrow-left-right"></i> 对比栏 <strong id="compareCount">0</strong>/2</span>
+        </div>
+      </div>
+
+      <div class="filter-bar card">
+        <div class="filter-row">
+          <div class="filter-item">
+            <label class="filter-label"><i class="bi bi-funnel-fill"></i> 类型</label>
+            <div class="filter-tags" id="typeFilters">
+              <span class="filter-tag active" data-type="all">全部</span>
+              <span class="filter-tag" data-type="广告设计类">广告设计类</span>
+              <span class="filter-tag" data-type="技术赋能设计类">技术赋能设计类</span>
+              <span class="filter-tag" data-type="跨专业合作类">跨专业合作类</span>
+              <span class="filter-tag" data-type="品牌视觉类">品牌视觉类</span>
+              <span class="filter-tag" data-type="UI设计类">UI设计类</span>
+              <span class="filter-tag" data-type="H5互动类">H5互动类</span>
+            </div>
+          </div>
+        </div>
+        <div class="filter-row">
+          <div class="filter-item">
+            <label class="filter-label"><i class="bi bi-tools"></i> 工具</label>
+            <div class="filter-tags" id="toolFilters">
+              <span class="filter-tag active" data-tool="all">全部工具</span>
+              <span class="filter-tag" data-tool="PS">PS</span>
+              <span class="filter-tag" data-tool="AI">AI</span>
+              <span class="filter-tag" data-tool="C4D">C4D</span>
+              <span class="filter-tag" data-tool="Figma">Figma</span>
+              <span class="filter-tag" data-tool="HTML/CSS">HTML/CSS</span>
+              <span class="filter-tag" data-tool="JavaScript">JavaScript</span>
+            </div>
+          </div>
+        </div>
+        <div class="filter-row filter-row-bottom">
+          <div class="filter-search">
+            <i class="bi bi-search"></i>
+            <input type="text" id="searchInput" placeholder="搜索关键词（如：海报、UI、转化率等）" class="form-control">
+          </div>
+          <div class="filter-sort">
+            <label class="filter-label"><i class="bi bi-sort-down"></i> 排序</label>
+            <select id="sortSelect" class="form-select">
+              <option value="default">默认排序</option>
+              <option value="date-desc">最新优先</option>
+              <option value="date-asc">最早优先</option>
+              <option value="name-asc">名称 A-Z</option>
+              <option value="name-desc">名称 Z-A</option>
+            </select>
+          </div>
+          <div class="view-toggle">
+            <button class="view-btn active" data-view="card" title="卡片视图"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+            <button class="view-btn" data-view="masonry" title="瀑布流视图"><i class="bi bi-columns-gap"></i></button>
+          </div>
+          <div class="filter-actions">
+            <button class="btn btn-outline-primary btn-sm" id="showFavoritesBtn">
+              <i class="bi bi-heart-fill"></i> 查看收藏
+            </button>
+            <button class="btn btn-outline-accent btn-sm" id="showCompareBtn">
+              <i class="bi bi-arrow-left-right"></i> 对比栏 (<span id="compareBtnCount">0</span>)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-result-info">
+        <span id="resultInfo">显示 6 个作品</span>
+        <button class="btn btn-link btn-sm" id="resetFilters">重置筛选</button>
+      </div>
+
+      <div class="works-container card-view" id="worksContainer"></div>
+
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <i class="bi bi-inbox"></i>
+        <h3>没有找到匹配的作品</h3>
+        <p>试试调整筛选条件或搜索关键词</p>
+        <button class="btn btn-primary" id="emptyResetBtn">重置筛选</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- 作品详情模态框 -->
+  <div class="modal fade" id="workDetailModal" tabindex="-1" aria-labelledby="workDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="workDetailModalLabel">作品详情</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+        </div>
+        <div class="modal-body" id="workDetailBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" id="modalFavoriteBtn">
+            <i class="bi bi-heart"></i> 收藏
+          </button>
+          <button type="button" class="btn btn-outline-accent" id="modalCompareBtn">
+            <i class="bi bi-plus"></i> 加入对比
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 对比面板模态框 -->
+  <div class="modal fade" id="compareModal" tabindex="-1" aria-labelledby="compareModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="compareModalLabel"><i class="bi bi-arrow-left-right"></i> 作品对比</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+        </div>
+        <div class="modal-body" id="compareBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" id="clearCompareBtn">清空对比栏</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 收藏列表模态框 -->
+  <div class="modal fade" id="favoritesModal" tabindex="-1" aria-labelledby="favoritesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="favoritesModalLabel"><i class="bi bi-heart-fill"></i> 我的收藏</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+        </div>
+        <div class="modal-body" id="favoritesBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" id="clearFavoritesBtn">清空收藏</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 固定对比栏 -->
+  <div class="compare-bar" id="compareBar">
+    <div class="compare-bar-content">
+      <div class="compare-bar-title">
+        <i class="bi bi-arrow-left-right"></i> 对比栏 (<span id="compareBarCount">0</span>/2)
+      </div>
+      <div class="compare-bar-items" id="compareBarItems"></div>
+      <div class="compare-bar-actions">
+        <button class="btn btn-accent btn-sm" id="compareBarBtn" disabled>开始对比</button>
+        <button class="btn btn-outline-secondary btn-sm" id="compareBarClearBtn">清空</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    (function () {
+      if (typeof window.jQuery !== 'function') return;
+      var $ = window.jQuery;
+      $(document).on("mobileinit", function () {
+        $.mobile.ajaxEnabled = false;
+        $.mobile.linkBindingEnabled = false;
+        $.mobile.hashListeningEnabled = false;
+      });
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/portfolio.js"></script>
+</body>
+</html>
