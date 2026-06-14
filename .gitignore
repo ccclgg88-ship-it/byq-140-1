@@ -1,0 +1,28 @@
+# 操作系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器 / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 日志与临时
+*.log
+.tmp
+.temp
+*.bak
+
+# 依赖与构建（若后续引入时忽略）
+node_modules/
+dist/
+build/
+.cache/
+
+# 本地或敏感（按需取消注释）
+# .env
+# .env.local
+# *.local

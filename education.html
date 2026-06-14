@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教育与总结 - 雷青青 · 个人简历展示</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/education.css">
+</head>
+<body data-page="education">
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">雷青青 · 简历</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="切换导航">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html" data-ajax="false" data-role="button">首页</a></li>
+            <li class="nav-item"><a class="nav-link" href="positioning.html" data-ajax="false" data-role="button">个人定位</a></li>
+            <li class="nav-item"><a class="nav-link" href="skills.html" data-ajax="false" data-role="button">技能与工具</a></li>
+            <li class="nav-item"><a class="nav-link" href="works.html" data-ajax="false" data-role="button">作品与项目</a></li>
+            <li class="nav-item"><a class="nav-link" href="education.html" data-ajax="false" data-role="button">教育与总结</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="education-section">
+      <h1>教育与总结</h1>
+
+      <div class="education-block">
+        <h2>教育背景</h2>
+        <ul class="course-list">
+          <li>院校：高职院校计算机信息学院</li>
+          <li>专业：广告设计</li>
+          <li>核心课程：</li>
+          <li class="sub">设计类：平面构成、广告创意</li>
+          <li class="sub">技术类：网页设计、<span class="tech-highlight">Python</span> 基础</li>
+        </ul>
+      </div>
+
+      <div class="education-block">
+        <h2>求职意愿</h2>
+        <div class="willingness-block">
+          <p>对岗位理解：广告设计不仅是创意，更是用技术实现商业价值的过程。</p>
+          <p>期望：希望加入重视「设计+技术」结合的团队，用设计能力和技术基础，为品牌创造更有影响力的视觉内容。</p>
+          <p class="emphasis">期待与贵司携手，用设计解决问题的实践力创造价值。</p>
+        </div>
+      </div>
+
+      <div class="education-block contact-form-block">
+        <h2>联系我</h2>
+        <p class="form-desc">如有合适岗位或合作意向，欢迎填写下方表单，我会尽快回复。</p>
+        <form class="contact-form" id="contactForm" data-validate="true" action="#" method="post" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="contactName" class="form-label">姓名 <span class="text-danger">*</span></label>
+              <input type="text" id="contactName" name="name" class="form-control" placeholder="请输入您的姓名" required autocomplete="name">
+            </div>
+            <div class="col-md-6">
+              <label for="contactEmail" class="form-label">邮箱 <span class="text-danger">*</span></label>
+              <input type="email" id="contactEmail" name="email" class="form-control" placeholder="example@email.com" required autocomplete="email">
+            </div>
+            <div class="col-md-6">
+              <label for="contactPhone" class="form-label">电话</label>
+              <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="选填，便于及时联系" autocomplete="tel">
+            </div>
+            <div class="col-md-6">
+              <label for="contactDate" class="form-label">期望到岗日期</label>
+              <input type="text" id="contactDate" name="expected_date" class="form-control" placeholder="点击选择日期" readonly autocomplete="off">
+            </div>
+            <div class="col-12">
+              <label for="contactMessage" class="form-label">留言 <span class="text-danger">*</span></label>
+              <textarea id="contactMessage" name="message" class="form-control" rows="4" placeholder="请简要说明意向或岗位信息" required></textarea>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary" data-role="button">提交</button>
+              <button type="reset" class="btn btn-outline-secondary ms-2" data-role="button">重置</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    (function () {
+      if (typeof window.jQuery !== 'function') return;
+      var $ = window.jQuery;
+      $(document).on("mobileinit", function () {
+        $.mobile.ajaxEnabled = false;
+        $.mobile.linkBindingEnabled = false;
+        $.mobile.hashListeningEnabled = false;
+      });
+    })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/education.js"></script>
+</body>
+</html>

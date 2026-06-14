@@ -1,0 +1,316 @@
+/* 教育与总结页：课程列表、求职意愿强调、层次与留白 */
+
+.education-section {
+  padding: var(--space-6) 0;
+}
+
+.education-section h1 {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: var(--space-6);
+  font-weight: 700;
+}
+
+.education-block {
+  margin-bottom: var(--space-6);
+}
+
+.education-block h2 {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-accent);
+  font-weight: 600;
+}
+
+.course-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.course-list li {
+  padding: var(--space-2) 0;
+  padding-left: 28px;
+  position: relative;
+  color: var(--color-muted);
+  transition: color var(--transition-fast);
+}
+
+.course-list li:hover {
+  color: var(--color-dark);
+}
+
+.course-list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: 1.25rem;
+  top: 2px;
+}
+
+.course-list .sub {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  margin-left: 28px;
+}
+
+.willingness-block {
+  background: linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border-left: 4px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), border-left-color var(--transition-fast);
+}
+
+.willingness-block:hover {
+  box-shadow: var(--shadow);
+  border-left-color: var(--color-accent);
+}
+
+.willingness-block p {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 1em;
+  color: var(--color-muted);
+}
+
+.willingness-block .emphasis {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-top: var(--space-4);
+  margin-bottom: 0;
+  letter-spacing: -0.01em;
+}
+
+/* 联系我表单区块 */
+.contact-form-block {
+  margin-top: var(--space-6);
+}
+
+.contact-form-block .form-desc {
+  color: var(--color-muted);
+  margin-bottom: var(--space-4);
+  font-size: 0.9375rem;
+}
+
+.contact-form {
+  background: linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-form .form-label {
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.contact-form .btn-primary {
+  min-width: 100px;
+}
+
+/* 期望到岗日期 - 日历中文与站点样式 */
+.education-datepicker.ui-datepicker,
+.ui-datepicker.education-datepicker {
+  font-family: var(--font-body);
+  border-radius: var(--radius-lg);
+  border: 1px solid #e2e8f0;
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+  overflow: hidden;
+}
+
+.education-datepicker .ui-datepicker-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  border: none;
+  border-radius: 0;
+  padding: var(--space-2) 44px;
+  color: #fff;
+  position: relative;
+  overflow: visible;
+  min-height: 48px;
+}
+
+.education-datepicker .ui-datepicker-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+/* 上月/下月按钮：统一圆形、图标一致、禁用态区分 */
+.education-datepicker .ui-datepicker-prev,
+.education-datepicker .ui-datepicker-next {
+  position: absolute;
+  top: 50%;
+  margin-top: -16px;
+  left: var(--space-2);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background-color var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.education-datepicker .ui-datepicker-next {
+  left: auto;
+  right: var(--space-2);
+}
+
+.education-datepicker .ui-datepicker-prev:hover,
+.education-datepicker .ui-datepicker-next:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.education-datepicker .ui-datepicker-prev:active,
+.education-datepicker .ui-datepicker-next:active {
+  transform: scale(0.94);
+}
+
+/* 禁用态：不可点击时弱化显示 */
+.education-datepicker .ui-datepicker-prev.ui-state-disabled,
+.education-datepicker .ui-datepicker-next.ui-state-disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.education-datepicker .ui-datepicker-prev.ui-state-disabled:hover,
+.education-datepicker .ui-datepicker-next.ui-state-disabled:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* 箭头图标：统一白色三角，隐藏 jQuery UI 默认图标，并精确居中 */
+.education-datepicker .ui-datepicker-prev span,
+.education-datepicker .ui-datepicker-next span,
+.education-datepicker .ui-datepicker-prev .ui-icon-circle-triangle-w,
+.education-datepicker .ui-datepicker-next .ui-icon-circle-triangle-e {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: none !important;
+  background-image: none !important;
+}
+
+.education-datepicker .ui-datepicker-prev span {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 6px solid #fff;
+  border-left: 0;
+}
+
+.education-datepicker .ui-datepicker-next span {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid #fff;
+  border-right: 0;
+}
+
+.education-datepicker .ui-datepicker-calendar th {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: var(--space-1) 0;
+}
+
+.education-datepicker .ui-datepicker-calendar td {
+  padding: 2px;
+}
+
+.education-datepicker .ui-datepicker-calendar td a {
+  text-align: center;
+  padding: var(--space-1) 0;
+  border-radius: var(--radius-sm);
+  color: var(--color-dark);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.education-datepicker .ui-datepicker-calendar td a:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.education-datepicker .ui-datepicker-calendar td.ui-datepicker-current-day a,
+.education-datepicker .ui-datepicker-calendar td a.ui-state-active {
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.education-datepicker .ui-datepicker-calendar td.ui-datepicker-other-month span {
+  color: #cbd5e1;
+}
+
+/* 不可选日期（过去日期等）*/
+.education-datepicker .ui-datepicker-calendar td.ui-datepicker-unselectable {
+  opacity: 1;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.education-datepicker .ui-datepicker-calendar td.ui-datepicker-unselectable span,
+.education-datepicker .ui-datepicker-calendar td a.ui-state-disabled {
+  color: #94a3b8 !important;
+  background: var(--color-bg-subtle) !important;
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) 0;
+  display: block;
+  text-align: center;
+  line-height: 1.5;
+  cursor: default;
+}
+
+.education-datepicker .ui-datepicker-calendar td.ui-datepicker-unselectable.ui-datepicker-other-month span {
+  color: #cbd5e1 !important;
+  background: transparent !important;
+}
+
+@media (max-width: 767.98px) {
+  .education-section {
+    padding: var(--space-4) 0;
+  }
+
+  .education-section h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .education-block {
+    margin-bottom: var(--space-5);
+  }
+
+  .willingness-block {
+    padding: var(--space-4);
+  }
+
+  .willingness-block .emphasis {
+    font-size: 1.0625rem;
+  }
+
+  .contact-form {
+    padding: var(--space-4);
+  }
+}

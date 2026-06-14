@@ -1,0 +1,341 @@
+/* 个人简历展示网站 - 公共样式（现代官网级）
+ * 设计令牌、布局、导航、通用组件、交互反馈、响应式
+ */
+
+/* ========== 1. CSS 变量（设计令牌） ========== */
+:root {
+  /* 主色：现代蓝，略偏科技感 */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-light: rgba(37, 99, 235, 0.08);
+  /* 辅助色：活力橙，用于强调与高亮 */
+  --color-accent: #ea580c;
+  --color-accent-hover: #c2410c;
+  --color-accent-light: rgba(234, 88, 12, 0.1);
+  /* 中性色 */
+  --color-dark: #0f172a;
+  --color-muted: #475569;
+  --color-light: #f1f5f9;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f8fafc;
+  /* 技术高亮 */
+  --color-tech: #ea580c;
+  /* 间距尺度（8px 基准） */
+  --spacing-unit: 8px;
+  --space-1: calc(var(--spacing-unit) * 1);
+  --space-2: calc(var(--spacing-unit) * 2);
+  --space-3: calc(var(--spacing-unit) * 3);
+  --space-4: calc(var(--spacing-unit) * 4);
+  --space-5: calc(var(--spacing-unit) * 5);
+  --space-6: calc(var(--spacing-unit) * 6);
+  /* 圆角层级 */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  /* 阴影层级 */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  /* 过渡 */
+  --transition-fast: 0.15s ease;
+  --transition: 0.25s ease;
+  --transition-slow: 0.35s ease;
+  /* 字体 */
+  --font-title: "黑体", "SimHei", "PingFang SC", sans-serif;
+  --font-body: "微软雅黑", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+/* ========== 2. 基础重置与布局 ========== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-dark);
+  background: var(--color-bg);
+  background-image: linear-gradient(180deg, var(--color-bg-subtle) 0%, var(--color-bg) 12rem);
+  background-attachment: fixed;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  flex: 1;
+}
+
+main.container {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
+.container {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+/* ========== 3. 导航样式 ========== */
+.navbar {
+  box-shadow: var(--shadow-sm);
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+  transition: box-shadow var(--transition);
+}
+
+.navbar.scrolled,
+.navbar:hover {
+  box-shadow: var(--shadow);
+}
+
+.navbar-dark .navbar-brand {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--color-bg) !important;
+  transition: opacity var(--transition-fast);
+}
+
+.navbar-dark .navbar-brand:hover {
+  opacity: 0.92;
+}
+
+.navbar .nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: var(--space-2) var(--space-3) !important;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.navbar-dark .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar-dark .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff !important;
+}
+
+.navbar-dark .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.navbar-toggler {
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+.navbar.bg-primary {
+  background-color: var(--color-primary) !important;
+}
+
+/* ========== 4. 标题与正文 ========== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 1.875rem; font-weight: 700; }
+h2 { font-size: 1.5rem; font-weight: 600; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+p {
+  margin-bottom: 1em;
+  color: var(--color-muted);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========== 5. 通用组件（按钮、卡片、输入框、高亮） ========== */
+.btn {
+  font-weight: 500;
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: #fff;
+}
+
+/* 卡片 */
+.card {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+/* 技术关键词高亮 */
+.tech-highlight {
+  color: var(--color-tech);
+  font-weight: 600;
+  padding: 0 4px;
+  border-radius: 4px;
+  background: var(--color-accent-light);
+}
+
+/* 输入框（若有表单） */
+.form-control, .form-select {
+  border-radius: var(--radius);
+  border: 1px solid #e2e8f0;
+  padding: var(--space-2) var(--space-3);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:hover,
+.form-select:hover {
+  border-color: #cbd5e1;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+  outline: none;
+}
+
+/* ========== 6. 页脚 ========== */
+.site-footer {
+  margin-top: auto;
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-bg-subtle);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ========== 7. 响应式与断点 ========== */
+@media (max-width: 991.98px) {
+  .container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .container {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+}
+
+/* ========== 8. jQuery Mobile 增强覆盖（保持站点风格 + 触屏优化） ========== */
+/* 导航：保留 Bootstrap 导航样式，仅用 JM 增强触屏点击区域与反馈 */
+.navbar .nav-link.ui-btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3) !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.navbar .nav-link.ui-btn .ui-btn-inner,
+.navbar .nav-link.ui-btn .ui-btn-text {
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  font-size: inherit !important;
+  display: inline !important;
+}
+
+.navbar .nav-link.ui-btn:hover,
+.navbar .nav-link.ui-btn:active,
+.navbar .nav-link.ui-btn.ui-btn-active {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+}
+
+.navbar .nav-link.active.ui-btn {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* 站点内按钮：保留 Bootstrap 按钮样式，JM 仅提供触屏最小点击区域 */
+.btn.ui-btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.btn.ui-btn .ui-btn-inner,
+.btn.ui-btn .ui-btn-text {
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  display: inline !important;
+}

@@ -1,0 +1,281 @@
+/* 作品与项目页：卡片悬浮、图片 hover、技术高亮 */
+
+.works-section {
+  padding: var(--space-6) 0;
+}
+
+.works-section h1 {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: var(--space-6);
+  font-weight: 700;
+}
+
+.work-card {
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.work-card .row {
+  margin: 0;
+}
+
+.work-card .col-md-5,
+.work-card .col-md-7 {
+  padding: 0;
+}
+
+.work-image-wrap {
+  height: 100%;
+  min-height: 260px;
+  background: var(--color-bg-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.work-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  min-height: 260px;
+  transition: transform var(--transition-slow);
+}
+
+.work-card:hover .work-image {
+  transform: scale(1.03);
+}
+
+.work-body {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.work-body h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.work-body .meta {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-3);
+}
+
+.work-body p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+.work-body .outcome {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid #e2e8f0;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.work-body .outcome strong {
+  color: var(--color-accent);
+}
+
+/* 查看详情弹窗内容（jQuery UI Dialog） */
+.work-dialog-content .meta {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-2);
+}
+
+.work-dialog-content p {
+  margin-bottom: 0.75em;
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+.work-dialog-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* 弹窗打开时锁定背景滚动（符合现代模态交互） */
+html.work-dialog-open,
+body.work-dialog-open {
+  overflow: hidden;
+}
+
+/* 弹窗整体风格：与站点主色、圆角、阴影一致 */
+.work-dialog-theme.ui-dialog {
+  position: fixed !important;
+  font-family: var(--font-body);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  padding: 0;
+  z-index: 10000;
+}
+
+.work-dialog-theme .ui-dialog-titlebar {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #fff;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  box-sizing: border-box;
+}
+
+.work-dialog-theme .ui-dialog-title {
+  margin: 0;
+  padding: 0;
+  float: none;
+}
+
+.work-dialog-theme .ui-dialog-titlebar-close {
+  position: static;
+  float: none;
+  margin: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-indent: 0;
+}
+
+.work-dialog-theme .ui-dialog-titlebar-close:hover,
+.work-dialog-theme .ui-dialog-titlebar-close:focus {
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+.work-dialog-theme .ui-dialog-titlebar-close .ui-icon {
+  display: none;
+}
+
+.work-dialog-theme .ui-dialog-titlebar-close::after {
+  content: "×";
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.work-dialog-theme .ui-dialog-content {
+  padding: var(--space-5);
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  border: none;
+  background: var(--color-bg);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.work-dialog-theme .ui-dialog-content .tech-highlight {
+  color: var(--color-tech);
+  font-weight: 600;
+  padding: 0 4px;
+  border-radius: 4px;
+  background: var(--color-accent-light);
+}
+
+/* 模态遮罩 */
+.work-dialog-open .ui-widget-overlay {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.45);
+  opacity: 1;
+  border: none;
+  z-index: 9999;
+  animation: workDialogOverlayIn 0.2s ease;
+}
+
+@keyframes workDialogOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 弹窗打开动画 */
+.work-dialog-theme.ui-dialog {
+  animation: workDialogIn 0.25s ease;
+}
+
+@keyframes workDialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .work-dialog-theme.ui-dialog {
+    width: calc(100vw - var(--space-4)) !important;
+    max-width: none;
+  }
+
+  .work-dialog-theme .ui-dialog-titlebar,
+  .work-dialog-theme .ui-dialog-content {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .works-section {
+    padding: var(--space-4) 0;
+  }
+
+  .works-section h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .work-image-wrap,
+  .work-image {
+    min-height: 220px;
+  }
+
+  .work-body {
+    padding: var(--space-4);
+  }
+
+  .work-card {
+    margin-bottom: var(--space-5);
+  }
+}
