@@ -92,9 +92,9 @@
       tools: ['AI', 'PS'],
       toolsFull: ['Illustrator', 'Photoshop'],
       keywords: ['品牌设计', 'VI系统', 'Logo设计', '视觉规范', '传统元素'],
-      cover: 'images/works/placeholder.svg',
+      cover: 'images/works/project4.svg',
       images: [
-        'images/works/placeholder.svg',
+        'images/works/project4.svg',
         'images/works/project1.jpg',
         'images/works/project2.jpg'
       ],
@@ -119,9 +119,9 @@
       tools: ['Figma'],
       toolsFull: ['Figma'],
       keywords: ['APP设计', 'UI/UX', '健康管理', '数据可视化', '交互原型'],
-      cover: 'images/works/placeholder.svg',
+      cover: 'images/works/project5.svg',
       images: [
-        'images/works/placeholder.svg',
+        'images/works/project5.svg',
         'images/works/project3.jpg'
       ],
       description: '为健康管理类移动应用设计完整的用户界面，包含数据可视化、运动记录、饮食管理等核心功能模块。',
@@ -145,9 +145,9 @@
       tools: ['PS', 'HTML/CSS', 'JavaScript'],
       toolsFull: ['Photoshop', 'HTML5', 'CSS3', 'JavaScript'],
       keywords: ['H5设计', '互动营销', '春节主题', '动画设计', '社交媒体'],
-      cover: 'images/works/placeholder.svg',
+      cover: 'images/works/project6.svg',
       images: [
-        'images/works/placeholder.svg',
+        'images/works/project6.svg',
         'images/works/project1-cover.jpg',
         'images/works/project2-cover.jpg'
       ],
